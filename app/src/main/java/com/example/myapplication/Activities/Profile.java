@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,44 +45,49 @@ public class Profile extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        dref = FirebaseDatabase.getInstance().getReference("Users").child(auth.getCurrentUser().getUid());
-        dref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                String s_name = user.getUsername();
-                String s_email = user.getEmail();
-                name.setText(s_name);
-                email.setText(s_email);
-            }
+        try {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            dref = FirebaseDatabase.getInstance().getReference("Users").child(auth.getCurrentUser().getUid());
+            dref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User user = snapshot.getValue(User.class);
+                    String s_name = user.getUsername();
+                    String s_email = user.getEmail();
+                    name.setText(s_name);
+                    email.setText(s_email);
+                }
 
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Profile.this, EditProfile.class);
-                startActivity(intent);
-            }
-        });
+                }
+            });
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Profile.this, EditProfile.class);
+                    startActivity(intent);
+                }
+            });
 
-        addPic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
 
-            }
-        });
+            addPic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        } catch (Exception e) {
+            Log.d("PROFILE", e.getMessage());
+        }
 
 
     }

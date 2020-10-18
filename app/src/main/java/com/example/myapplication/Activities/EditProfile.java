@@ -7,6 +7,8 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -24,7 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class EditProfile extends AppCompatActivity {
 
@@ -40,7 +44,9 @@ public class EditProfile extends AppCompatActivity {
     int dayOfMonth;
     Calendar calendar;
     ImageButton back;
-
+    List<String> listspin;
+    ArrayAdapter<String> spinneradapter;
+    String genders;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +64,24 @@ public class EditProfile extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         dref = FirebaseDatabase.getInstance().getReference("Users").child(auth.getCurrentUser().getUid());
+        listspin=new ArrayList<String>();
+        listspin.add("Male");
+        listspin.add("Female");
+        listspin.add("Others");
+        spinneradapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,listspin);
+        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gender.setAdapter(spinneradapter);
+        gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                genders=parent.getItemAtPosition(position).toString();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -122,6 +145,9 @@ public class EditProfile extends AppCompatActivity {
 
                     if (weight.getText().toString() != null && weight.getText().toString().length() > 0 && weight.getText().toString() != "") {
                         dref.child("weight").setValue(weight.getText().toString().trim());
+                    }
+                    if (genders != null && genders.length() > 0 && genders != "") {
+                        dref.child("gender").setValue(genders);
                     }
                 } catch (Exception e) {
                     Log.d("PROFILE", e.getMessage());

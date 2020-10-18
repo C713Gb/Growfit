@@ -24,13 +24,15 @@
         <activity android:name=".Activities.Authenticate2" />
         <activity android:name=".Activities.SigninEmail" />
         <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.FoodIntake"/>
         <activity android:name=".Activities.RegisterEmail" />
         <activity android:name=".Activities.Authenticate" />
         <activity android:name=".Activities.MainActivity1"/>
         <activity android:name=".Activities.DisplayActivity"/>
         <activity android:name=".Activities.DetailsActivity"/>
         <activity android:name=".Activities.YoutubePlayerApiDemo"/>
-        <activity android:name=".Activities.MapsActivity1">
+        <activity android:name=".Activities.MapsActivity1"/>
+        <activity android:name=".Activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

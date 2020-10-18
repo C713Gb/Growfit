@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item1nav"
+        android:icon="@drawable/today"
+        android:iconTint="@color/colorPrimary"
+        android:title="Today" />
+
+    <item
+        android:id="@+id/item2nav"
+        android:icon="@drawable/walk"
+        android:iconTint="@color/colorPrimary"
+        android:title="Walk" />
+
+    <item
+        android:id="@+id/item3nav"
+        android:icon="@drawable/exercise"
+        android:iconTint="@color/colorPrimary"
+        android:title="Exercises" />
+
+    <item
+        android:id="@+id/item4nav"
+        android:icon="@drawable/diet"
+        android:iconTint="@color/colorPrimary"
+        android:title="Diet" />
+
+</menu>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:elevation="5dp"
+    android:background="#2a3132"
+    android:layout_marginTop="5dp">
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/linearclick">
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/abc_vector_test"
+        android:id="@+id/vidimage"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="A better technique with smart thinking makes one achieve far better in future"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:id="@+id/vidname"/>
+   <LinearLayout
+       android:layout_width="fill_parent"
+       android:layout_height="30dp"
+       android:orientation="horizontal"
+       android:layout_marginTop="5dp"
+       android:gravity="center">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="GramWorkX"
+           android:textSize="12sp"
+           android:textStyle="bold"
+           android:textColor="#f1f1f1"
+           android:layout_gravity="center"
+           android:layout_marginRight="5dp"
+           android:gravity="center"/>
+       <ImageView
+           android:layout_width="8dp"
+           android:layout_height="8dp"
+           android:src="@drawable/ic_baseline_fiber_manual_record_24"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="10K views"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:textSize="12sp"
+           android:textStyle="bold"
+           android:textColor="#f1f1f1"
+           android:layout_gravity="center"
+           android:gravity="center" />
+       <ImageView
+           android:layout_width="8dp"
+           android:layout_height="8dp"
+           android:src="@drawable/ic_baseline_fiber_manual_record_24"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="3 days ago"
+           android:layout_marginLeft="5dp"
+           android:textSize="12sp"
+           android:textStyle="bold"
+           android:textColor="#f1f1f1"
+           android:layout_gravity="center"
+           android:gravity="center" />
+   </LinearLayout>
+</LinearLayout>
+</LinearLayout>

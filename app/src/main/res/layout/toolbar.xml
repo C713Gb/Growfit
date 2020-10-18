@@ -37,7 +37,7 @@
             android:id="@+id/pts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10"
+            android:text="FP"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="2dp"

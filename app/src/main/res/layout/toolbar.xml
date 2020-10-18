@@ -46,7 +46,8 @@
             android:textSize="18sp"
             android:layout_centerVertical="true"
             android:textColor="@color/white"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:clickable="true"/>
 
     </RelativeLayout>
 

@@ -15,15 +15,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activities.FoodIntake"></activity>
+        <activity android:name=".Activities.Fitpoints" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <activity android:name=".Activities.EditProfile"></activity>
+
+        <activity android:name=".Activities.EditProfile" />
         <activity android:name=".Activities.Profile" />
         <activity android:name=".Activities.Tasks" />
         <activity android:name=".Activities.Authenticate2" />
         <activity android:name=".Activities.SigninEmail" />
-        <activity android:name=".Activities.MapsActivity1" />
+        <activity android:name=".Activities.MapsActivity1">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
         <activity android:name=".Activities.RegisterEmail" />
         <activity android:name=".Activities.Authenticate" />
         <activity android:name=".Activities.SplashScreen">

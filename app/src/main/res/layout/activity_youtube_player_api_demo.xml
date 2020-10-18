@@ -23,11 +23,11 @@
             android:background="@drawable/rounded_corner_shadow"
             android:gravity="center_horizontal"
             android:orientation="vertical">
-            <com.google.android.youtube.player.YouTubePlayerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:id="@+id/youtube_view"/>
+<!--            <com.google.android.youtube.player.YouTubePlayerView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="30dp"-->
+<!--                android:id="@+id/youtube_view"/>-->
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
@@ -38,8 +38,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/title_logo"
-                android:textColor="@color/title"
+                android:text="Title"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"/>
 <!--            <ImageView-->
@@ -55,6 +55,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:background="@drawable/rounded_corner_shadow"
-            android:text="@string/btn_skip_intro"/>
+            android:text="Intro"/>
     </LinearLayout>
 </RelativeLayout>

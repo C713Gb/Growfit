@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     public BottomNavigationView bottomNav;
     Toolbar toolbar;
-    TextView title;
+    TextView title, points;
     public String currentFrame = "";
     ImageButton profile;
 
@@ -51,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        points.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, Fitpoints.class);
+                startActivity(i);
+            }
+        });
 
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -64,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.main_toolbar);
         title = toolbar.findViewById(R.id.toolbar_text);
         profile = toolbar.findViewById(R.id.profile_btn);
+        points = toolbar.findViewById(R.id.pts);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

@@ -41,48 +41,76 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <RelativeLayout
-        android:id="@+id/add_task_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/task_toolbar"
-        android:focusableInTouchMode="true"
-        android:elevation="4dp"
-        android:layout_margin="5dp"
-        android:background="@color/white"
-        android:padding="10dp">
-
-        <EditText
-            android:id="@+id/add_task"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Add a new task..."
-            android:gravity="center"
-            android:background="@drawable/task_box"
-            android:padding="10dp"/>
-
-        <Button
-            android:id="@+id/add_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/add_task"
-            android:layout_centerHorizontal="true"
-            android:text="Add"
-            android:textAllCaps="false"
-            android:background="@drawable/next_btn"
-            android:textColor="@color/white"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:layout_marginTop="5dp"
-            android:visibility="gone"/>
-
-    </RelativeLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/task_recycler"
-        android:layout_below="@+id/add_task_layout"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_tasks"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"/>
+        android:layout_below="@+id/task_toolbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/add_task_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:elevation="4dp"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:padding="10dp">
+
+                <EditText
+                    android:id="@+id/add_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Add a new task..."
+                    android:gravity="center"
+                    android:background="@drawable/task_box"
+                    android:padding="10dp"/>
+
+                <Button
+                    android:id="@+id/add_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/add_task"
+                    android:layout_centerHorizontal="true"
+                    android:text="Add"
+                    android:textAllCaps="false"
+                    android:background="@drawable/next_btn"
+                    android:textColor="@color/white"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/recycler_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/add_task_layout"
+                android:clickable="true">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/task_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:clickable="true"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
+
+
 
 </RelativeLayout>

@@ -8,39 +8,22 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.myapplication.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-
-public class Authenticate extends AppCompatActivity {
-
+public class Authenticate2 extends AppCompatActivity {
     Button gbtn, ebtn, sbtn;
     Intent intent;
-    FirebaseUser firebaseUser;
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        if (firebaseUser != null){
-            startActivity(new Intent(Authenticate.this, MainActivity.class));
-            finish();
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_authenticate);
+        setContentView(R.layout.activity_authenticate2);
 
         init();
 
         ebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(Authenticate.this, RegisterEmail.class);
+                intent = new Intent(Authenticate2.this, SigninEmail.class);
                 startActivity(intent);
             }
         });
@@ -48,15 +31,15 @@ public class Authenticate extends AppCompatActivity {
         sbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(Authenticate.this, Authenticate2.class);
+                intent = new Intent(Authenticate2.this, RegisterEmail.class);
                 startActivity(intent);
             }
         });
     }
 
     private void init() {
-        gbtn = findViewById(R.id.signup_google);
-        ebtn = findViewById(R.id.signup_email);
-        sbtn = findViewById(R.id.signin_btn);
+        gbtn = findViewById(R.id.signin_google);
+        ebtn = findViewById(R.id.signin_email);
+        sbtn = findViewById(R.id.signin_btn_2);
     }
 }

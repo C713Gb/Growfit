@@ -41,10 +41,6 @@ public class RegisterEmail extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(RegisterEmail.this);
 
-        DatabaseReference dref = FirebaseDatabase.getInstance().getReference().child("TEST");
-        dref.setValue("Hello, World");
-        Log.d("DREF", dref.toString());
-
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,34 +82,24 @@ public class RegisterEmail extends AppCompatActivity {
                                 databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        Log.d("TEST", "5");
 
                                         if (task.isSuccessful()) {
-                                            Log.d("TEST", "6");
-
                                             progressDialog.dismiss();
                                             Intent i = new Intent(RegisterEmail.this, MainActivity.class);
                                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                             startActivity(i);
                                             finish();
                                         } else {
-                                            Log.d("TEST", "7");
-
-                                            //Failed
                                             progressDialog.dismiss();
                                             Toast.makeText(RegisterEmail.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
                             } catch (Exception e) {
-                                Log.d("TEST", "8");
-
                                 Toast.makeText(RegisterEmail.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
 
                         } else {
-                            Log.d("TEST", "9");
-
                             //Failed
                             progressDialog.dismiss();
                             Toast.makeText(RegisterEmail.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

@@ -40,17 +40,15 @@ public class Profile extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        dref = FirebaseDatabase.getInstance().getReference("Users");
+        dref = FirebaseDatabase.getInstance().getReference("Users").child(auth.getCurrentUser().getUid());
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    User user = snapshot1.getValue(User.class);
-                    String s_name = user.getUsername();
-                    String s_email = user.getEmail();
-                    name.setText(s_name);
-                    email.setText(s_email);
-                }
+                User user = snapshot.getValue(User.class);
+                String s_name = user.getUsername();
+                String s_email = user.getEmail();
+                name.setText(s_name);
+                email.setText(s_email);
             }
 
             @Override
@@ -73,5 +71,7 @@ public class Profile extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+
     }
 }

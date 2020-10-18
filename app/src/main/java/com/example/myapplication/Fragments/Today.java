@@ -1,5 +1,6 @@
 package com.example.myapplication.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.Activities.MainActivity;
+import com.example.myapplication.Activities.Tasks;
 import com.example.myapplication.Adapters.CustomSwipeAdapter;
 import com.example.myapplication.R;
 
@@ -46,6 +48,7 @@ public class Today extends Fragment {
         dotsCount = adapter.getCount();
         dots = new ImageView[dotsCount];
         walk = view.findViewById(R.id.walk_card);
+        task = view.findViewById(R.id.task_card);
         calculate = view.findViewById(R.id.diet_card);
         see = view.findViewById(R.id.see_exercises);
 
@@ -140,6 +143,14 @@ public class Today extends Fragment {
             public void onClick(View v) {
                 ma.bottomNav.setSelectedItemId(R.id.item4nav);
                 ma.currentFrame = "Diet";
+            }
+        });
+
+        task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Tasks.class);
+                startActivity(intent);
             }
         });
 

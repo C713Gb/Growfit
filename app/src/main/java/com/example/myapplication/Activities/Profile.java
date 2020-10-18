@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.Models.User;
@@ -26,7 +27,8 @@ public class Profile extends AppCompatActivity {
     FirebaseAuth auth;
     DatabaseReference dref;
     Button edit;
-    ImageButton back;
+    ImageButton back, addPic;
+    ImageView profilePic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +39,20 @@ public class Profile extends AppCompatActivity {
         email = findViewById(R.id.email_txt_3);
         edit = findViewById(R.id.complete_profile_btn);
         back = findViewById(R.id.back_2);
+        addPic = findViewById(R.id.add_picture);
+        profilePic = findViewById(R.id.profile_pic);
 
         auth = FirebaseAuth.getInstance();
 
-        dref = FirebaseDatabase.getInstance().getReference("Users");
+        dref = FirebaseDatabase.getInstance().getReference("Users").child(auth.getCurrentUser().getUid());
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    User user = snapshot1.getValue(User.class);
-                    String s_name = user.getUsername();
-                    String s_email = user.getEmail();
-                    name.setText(s_name);
-                    email.setText(s_email);
-                }
+                User user = snapshot.getValue(User.class);
+                String s_name = user.getUsername();
+                String s_email = user.getEmail();
+                name.setText(s_name);
+                email.setText(s_email);
             }
 
             @Override
@@ -73,5 +75,14 @@ public class Profile extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        addPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
     }
 }

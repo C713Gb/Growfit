@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:padding="10dp"
-            android:text="DONE"
+            android:text=""
             android:textColor="#00FF00"
             android:visibility="invisible"
             android:layout_alignParentRight="true"/>

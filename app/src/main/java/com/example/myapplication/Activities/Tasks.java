@@ -187,7 +187,7 @@ public class Tasks extends AppCompatActivity implements SwipeRefreshLayout.OnRef
             dref.child(key).child("name").setValue(s_task);
             dref.child(key).child("done").setValue("no");
             dref.child(key).child("date").setValue(currentDate);
-            dref.child(key).child("dueDate").setValue(currentDate);
+            dref.child(key).child("dueDate").setValue("Due date "+currentDate);
 
             Toast.makeText(this, "Task added", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
@@ -220,7 +220,7 @@ public class Tasks extends AppCompatActivity implements SwipeRefreshLayout.OnRef
         refresh.setRefreshing(false);
     }
 
-    public void updateLayout(final String statCheck) {
+    public void updateLayout(final String statCheck, final String dueDate) {
         if (statCheck != "" && statCheck.length() > 0) {
             dref = FirebaseDatabase.getInstance().getReference("Users").child(auth.getCurrentUser().getUid()).child("Tasks");
             dref.addValueEventListener(new ValueEventListener() {
@@ -241,6 +241,30 @@ public class Tasks extends AppCompatActivity implements SwipeRefreshLayout.OnRef
                             k = 1;
                         }
                         if (k==1) break;
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+        if (dueDate.length()>0 && dueDate != null) {
+            final String statCheck1 = statCheck.trim();
+            dref = FirebaseDatabase.getInstance().getReference("Users").child(auth.getCurrentUser().getUid()).child("Tasks");
+            dref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Task task = snapshot.getValue(Task.class);
+                        if (statCheck1.equals(task.getName())) {
+                            String id = task.getId();
+                            DatabaseReference d2ref = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getCurrentUser().getUid()).child("Tasks").child(id);
+                            d2ref.child("dueDate").setValue("Due date "+dueDate);
+                            break;
+                        }
 
                     }
                 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.Models.User;
@@ -26,7 +27,8 @@ public class Profile extends AppCompatActivity {
     FirebaseAuth auth;
     DatabaseReference dref;
     Button edit;
-    ImageButton back;
+    ImageButton back, addPic;
+    ImageView profilePic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class Profile extends AppCompatActivity {
         email = findViewById(R.id.email_txt_3);
         edit = findViewById(R.id.complete_profile_btn);
         back = findViewById(R.id.back_2);
+        addPic = findViewById(R.id.add_picture);
+        profilePic = findViewById(R.id.profile_pic);
 
         auth = FirebaseAuth.getInstance();
 
@@ -69,6 +73,13 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        addPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

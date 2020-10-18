@@ -57,10 +57,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
             holder.text2.setText("DONE");
             holder.text2.setVisibility(View.VISIBLE);
             holder.checkBox.setChecked(true);
+            holder.text3.setVisibility(View.GONE);
         } else {
             holder.text2.setText("");
             holder.text2.setVisibility(View.INVISIBLE);
             holder.checkBox.setChecked(false);
+            holder.text3.setText(taskArrayList.get(position).getDueDate());
+            holder.text3.setVisibility(View.VISIBLE);
         }
 
         holder.text.setOnClickListener(new View.OnClickListener() {

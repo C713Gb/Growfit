@@ -6,8 +6,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView title;
     public String currentFrame = "";
+    ImageButton profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
 
         title.setText("Today");
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, Profile.class);
+                startActivity(i);
+            }
+        });
 
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -52,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNav = findViewById(R.id.bottom_nav);
         toolbar = findViewById(R.id.main_toolbar);
         title = toolbar.findViewById(R.id.toolbar_text);
+        profile = toolbar.findViewById(R.id.profile_btn);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

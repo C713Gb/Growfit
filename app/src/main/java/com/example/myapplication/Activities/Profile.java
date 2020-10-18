@@ -43,7 +43,7 @@ public class Profile extends AppCompatActivity {
     TextView name, email;
     FirebaseAuth auth;
     DatabaseReference dref;
-    Button edit;
+    Button edit,upd;
     ImageButton back, addPic;
     ImageView profilePic;
     StorageTask uploadtask;
@@ -56,7 +56,7 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        upd=findViewById(R.id.update);
         name = findViewById(R.id.username_txt);
         email = findViewById(R.id.email_txt_3);
         edit = findViewById(R.id.complete_profile_btn);
@@ -85,7 +85,12 @@ public class Profile extends AppCompatActivity {
 
                 }
             });
-
+upd.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        addtodata();
+    }
+});
             edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -111,7 +116,6 @@ public class Profile extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                   openfilechooser();
-                  addtodata();
                 }
             });
         } catch (Exception e) {
